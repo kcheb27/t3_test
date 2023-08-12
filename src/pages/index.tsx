@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { api } from "~/utils/api";
 import { SignInButton} from "@clerk/nextjs";
-import { SignOutButton} from "@clerk/nextjs";
+
 
 const CreatePostWizard = () =>{
   const {user} = useUser();
