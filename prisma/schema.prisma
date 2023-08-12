@@ -10,8 +10,14 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
-model Example {
+ 
+model Post {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    content String @db.VarChar(255)
+    authorID String
+    
+
+    //this below allows for indexing with authorID and easy searches
+    @@index([authorID])
 }
