@@ -29,7 +29,7 @@ export default function Home() {
             {!user.isSignedIn && <div className="flex justify-center"><SignInButton /></div>}
         </div>
         <div>
-          {[...data!,...data!]?.map((post) => (<div key = {post.id} className="p-8 border-b border-blue-900">{post.content}</div>))}
+          {data?.map((post) => (<div key = {post.id} className="p-8 border-b border-blue-900">{post.content}</div>))}
         </div>
         </div> 
       </main>
