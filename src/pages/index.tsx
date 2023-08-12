@@ -5,18 +5,7 @@ import { api } from "~/utils/api";
 import { SignInButton} from "@clerk/nextjs";
 
 
-const CreatePostWizard = () =>{
-  const {user} = useUser();
-  if(!user) return null;
-  return (
-    <div className="flex w-full gap-3"> <img src={user.profileImageUrl} 
-    alt = "Profile image" 
-    className="w-11 h-11 rounded-full"
-    />
-    <input placeholder="type something..." className = "bg-transparent text-white"/>
-    </div>
-  );
-}
+
 
 export default function Home() {
   const {data, isLoading} = api.posts.getAll.useQuery();
@@ -36,7 +25,6 @@ export default function Home() {
       <main className="flex h-screen justify-center bg-gradient-to-b from-purple-500 to-blue-900 ">
         <div className= "w-full border-x border-blue-900 md:max-w-2xl">
         <div className = "border-blue-900 border-b p-4 flex"> 
-            {user.isSignedIn && <CreatePostWizard/>}
         
             {!user.isSignedIn && <div className="flex justify-center"><SignInButton /></div>}
         </div>
