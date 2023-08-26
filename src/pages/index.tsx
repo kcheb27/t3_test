@@ -5,7 +5,6 @@ import { RouterOutputs, api } from "~/utils/api";
 import { SignInButton} from "@clerk/nextjs";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import Image from "next/image";
 
 
 dayjs.extend(relativeTime)
@@ -14,17 +13,15 @@ const CreatePostWizard = () =>{
   const {user} = useUser();
   if(!user) return null;
   return (
-    <div className="flex w-full gap-3"> <Image
-    src={user.profileImageUrl} 
+    <div className="flex w-full gap-3"> <img src={user.profileImageUrl} 
     alt = "Profile image" 
     className="w-11 h-11 rounded-full"
-    width={56}
-    height={56}
     />
     <input placeholder="type something..." className = "bg-transparent text-slate-200"/>
     </div>
   );
 }
+const text = "hello";
 type postWithUser = RouterOutputs["posts"]["getAll"][number];
 
 const PostView = (props: postWithUser) =>{
@@ -32,11 +29,7 @@ const PostView = (props: postWithUser) =>{
   return(
     <div>
       <div key = {post.id} className="flex p-8 gap-3 w-full border-b border-blue-900">
-      <Image src={author?.profilePic} 
-      className="w-11 h-11 rounded-full"
-      alt = {`~@${author.username}`}
-      width = {56}
-      height = {56}/>
+      <img src={author?.profilePic} className="w-11 h-11 rounded-full"/>
       <div className= "flex flex-col">
         <div className="flex text-slate-200"><span> {`@${author.username}`}</span>
         <span className="flex text-center text-slate-400"> {`...${dayjs(post.createdAt).fromNow()}`}</span>
@@ -67,7 +60,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-screen justify-center bg-black ">
-        <div className= "w-full border-x border-blue-900 md:max-w-2xl">
+        <div className= "w-full border-x border-blue-9000 md:max-w-2xl">
         <div className = "border-blue-900 border-b p-8 flex text-slate-200"> 
             {user.isSignedIn && <CreatePostWizard/>}
             {!user.isSignedIn && <div className="flex justify-center"><SignInButton /></div>}
